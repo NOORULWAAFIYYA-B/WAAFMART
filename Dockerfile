@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libjsoncpp-dev \
     uuid-dev \
     zlib1g-dev \
+    libsqlite3-dev \
     libcurl4-openssl-dev \
     libpq-dev \
     ca-certificates \
