@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pkg-config \
     libdrogon-dev \
     libjsoncpp-dev \
+    uuid-dev \
     libcurl4-openssl-dev \
     libpq-dev \
     ca-certificates \
