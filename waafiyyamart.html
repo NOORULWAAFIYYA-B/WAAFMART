@@ -672,6 +672,43 @@ input:disabled,button:disabled{opacity:.55;cursor:not-allowed}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 
+
+/* Frontend dashboard v2 — refreshed page hierarchy and dashboard-specific surfaces */
+.dashboard-heading,.admin-welcome{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:28px 32px;margin:0 0 22px;border:1px solid #dce8de;border-radius:24px;background:linear-gradient(115deg,#fff 0%,#f0f8f1 70%,#e7f4e9 100%);box-shadow:0 12px 30px rgba(21,48,34,.055)}
+.dashboard-heading h2,.admin-welcome h2{font-size:clamp(25px,3vw,36px);font-weight:850;line-height:1.15;letter-spacing:-1px;margin:7px 0}
+.dashboard-heading p,.admin-welcome p{margin:0;color:#687d70;max-width:620px;font-size:14px;line-height:1.7}
+.dashboard-heading.compact-heading{padding:23px 28px}
+.eyebrow{display:inline-block;color:#087f5b;font-size:10px;font-weight:900;letter-spacing:1.8px}
+.heading-mark,.admin-avatar{display:grid;place-items:center;flex:0 0 66px;width:66px;height:66px;border-radius:21px;background:linear-gradient(145deg,#d8f3e1,#b9e6c8);color:#087653;font-size:29px;font-weight:900;box-shadow:inset 0 0 0 1px #a9d9ba}
+.seller-heading{background:linear-gradient(115deg,#10271e 0%,#174e38 75%,#087f5b 100%);border-color:#174e38}
+.seller-heading h2{color:#fff}
+.seller-heading p{color:#d2e7d9}
+.seller-heading .eyebrow{color:#9be4ba}
+.seller-heading .heading-mark{background:#ffffff18;color:#d7f7e2;box-shadow:inset 0 0 0 1px #ffffff2d}
+.dashboard-section-label{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:26px 2px 14px;padding-bottom:12px;border-bottom:1px solid #dbe6dd;color:#264b37;font-size:12px;font-weight:900;letter-spacing:1.2px}
+.dashboard-section-label span+span{font-size:10px;color:#829387;letter-spacing:1px}
+.product-list-heading{margin-top:30px}
+.admin-welcome{grid-column:1/-1;min-height:170px;margin-bottom:0;padding:32px;background:linear-gradient(115deg,#10271e,#14583d 70%,#087f5b);border:0}
+.admin-welcome h2{color:#fff}
+.admin-welcome p{color:#d2e7d9}
+.admin-welcome .eyebrow{color:#9be4ba}
+.admin-avatar{background:#ffffff17;color:#fff;box-shadow:inset 0 0 0 1px #ffffff35;font-size:25px}
+#adminSection>.card{box-shadow:0 10px 30px rgba(21,48,34,.055)}
+#adminUsers,#adminOrders,#adminProducts{min-width:0}
+#sellerProducts .empty{margin-top:12px}
+#buyerOrders{margin-top:8px}
+#buyerOrders table,#sellerOrders table,#adminUsers table,#adminOrders table,#adminProducts table{width:100%}
+#cartList:empty:after{content:"Your cart is waiting for something you love.";display:block;padding:28px;text-align:center;color:#809185}
+#reviewsSection .dashboard-heading{margin-bottom:20px}
+@media(max-width:650px){
+ .dashboard-heading,.admin-welcome{padding:21px;border-radius:19px;gap:12px}
+ .dashboard-heading.compact-heading{padding:19px}
+ .dashboard-heading h2,.admin-welcome h2{font-size:25px}
+ .heading-mark,.admin-avatar{flex-basis:48px;width:48px;height:48px;border-radius:15px;font-size:22px}
+ .dashboard-section-label{align-items:flex-start;flex-direction:column;gap:5px}
+ .admin-welcome{min-height:unset}
+}
+
 </style>
 
 
@@ -847,6 +884,10 @@ input:disabled,button:disabled{opacity:.55;cursor:not-allowed}
 
     <!-- PRODUCTS -->
     <section id="productsSection" class="hidden">
+        <div class="dashboard-heading buyer-heading">
+            <div><span class="eyebrow">YOUR EVERYDAY MARKET</span><h2>Discover something good.</h2><p>Explore products, compare options and find your next favourite.</p></div>
+            <div class="heading-mark" aria-hidden="true">W</div>
+        </div>
         <div class="hero">
             <div>
                 <span class="badge">WAAFIYYAMART MARKETPLACE</span>
@@ -871,8 +912,12 @@ input:disabled,button:disabled{opacity:.55;cursor:not-allowed}
 
     <!-- CART -->
     <section id="cartSection" class="hidden">
+        <div class="dashboard-heading compact-heading">
+            <div><span class="eyebrow">READY WHEN YOU ARE</span><h2>Your shopping cart</h2><p>Review your items before placing your order.</p></div>
+            <div class="heading-mark" aria-hidden="true">🛒</div>
+        </div>
         <div class="card">
-            <h2>My Cart</h2>
+            <h2>Order summary</h2>
             <div id="cartList"></div>
             <h3 id="cartTotal">Total: ₹0</h3>
             <button onclick="placeOrder()">Place Order</button>
@@ -881,13 +926,20 @@ input:disabled,button:disabled{opacity:.55;cursor:not-allowed}
 
     <!-- BUYER ORDERS -->
     <section id="buyerOrdersSection" class="hidden">
-        <h2>My Orders</h2>
+        <div class="dashboard-heading compact-heading">
+            <div><span class="eyebrow">YOUR PURCHASES</span><h2>Order history</h2><p>Keep track of your recent orders and their status.</p></div>
+            <div class="heading-mark" aria-hidden="true">↗</div>
+        </div>
         <div id="buyerOrders"></div>
     </section>
 
     <!-- SELLER DASHBOARD -->
     <section id="sellerSection" class="hidden">
-
+        <div class="dashboard-heading seller-heading">
+            <div><span class="eyebrow">SELLER STUDIO</span><h2>Manage your marketplace.</h2><p>Add products, keep your listings up to date and manage your inventory from one place.</p></div>
+            <div class="heading-mark" aria-hidden="true">↗</div>
+        </div>
+        <div class="dashboard-section-label"><span>PRODUCT WORKSPACE</span><span>CREATE · UPDATE · ORGANISE</span></div>
         <div class="card">
             <div class="seller-form-title"><h2 id="productFormTitle">Add Product</h2><span class="small">Add clear photos to help buyers choose</span></div>
 
@@ -939,19 +991,26 @@ input:disabled,button:disabled{opacity:.55;cursor:not-allowed}
             </button>
         </div>
 
-        <h2>My Products</h2>
+        <div class="dashboard-section-label product-list-heading"><span>YOUR LISTINGS</span><span>PRODUCT INVENTORY</span></div>
         <div id="sellerProducts"></div>
 
     </section>
 
     <!-- SELLER ORDERS -->
     <section id="sellerOrdersSection" class="hidden">
-        <h2>Seller Orders</h2>
+        <div class="dashboard-heading compact-heading seller-heading">
+            <div><span class="eyebrow">SELLER STUDIO</span><h2>Incoming orders</h2><p>Review customer purchases and follow order progress.</p></div>
+            <div class="heading-mark" aria-hidden="true">▤</div>
+        </div>
         <div id="sellerOrders"></div>
     </section>
 
     <!-- PRODUCT REVIEWS -->
     <section id="reviewsSection" class="hidden">
+        <div class="dashboard-heading compact-heading">
+            <div><span class="eyebrow">COMMUNITY FEEDBACK</span><h2>Reviews & ratings</h2><p>See what shoppers are saying about the product.</p></div>
+            <div class="heading-mark" aria-hidden="true">★</div>
+        </div>
         <div class="card">
             <button class="password-toggle" onclick="showProducts()">← Back to products</button>
             <h2 id="reviewsProductTitle">Product reviews</h2>
@@ -970,7 +1029,10 @@ input:disabled,button:disabled{opacity:.55;cursor:not-allowed}
 
     <!-- ADMIN PANEL -->
     <section id="adminSection" class="hidden">
-        <h2>Admin Panel</h2>
+        <div class="admin-welcome">
+            <div><span class="eyebrow">WAAFIYYAMART CONTROL CENTRE</span><h2>Marketplace overview</h2><p>Monitor users, orders and product listings in one workspace.</p></div>
+            <div class="admin-avatar" aria-hidden="true">W</div>
+        </div>
         <div class="card">
             <h3>All users</h3>
             <div id="adminUsers"><p>Loading users…</p></div>
