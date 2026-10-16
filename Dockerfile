@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     cmake \
     pkg-config \
     libdrogon-dev \
+    libjsoncpp-dev \
     libcurl4-openssl-dev \
     libpq-dev \
     ca-certificates \
