@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libsqlite3-dev \
     libmariadb-dev \
     libmariadb-dev-compat \
+    libbrotli-dev \
     libcurl4-openssl-dev \
     libpq-dev \
     ca-certificates \
