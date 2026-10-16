@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     uuid-dev \
     zlib1g-dev \
     libsqlite3-dev \
+    libmariadb-dev \
+    libmariadb-dev-compat \
     libcurl4-openssl-dev \
     libpq-dev \
     ca-certificates \
