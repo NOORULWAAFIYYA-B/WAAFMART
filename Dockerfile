@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libdrogon-dev \
     libjsoncpp-dev \
     uuid-dev \
+    zlib1g-dev \
     libcurl4-openssl-dev \
     libpq-dev \
     ca-certificates \
